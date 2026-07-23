@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>残月协议 - 新月计划</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="scanline"></div>
+<div class="glitch-overlay" id="glitchOverlay"></div>
+<div class="eye-cursor" id="eyeCursor">👁</div>
+<div class="notification" id="notification"></div>
+<div class="horror-flash" id="horrorFlash"><div class="horror-text" id="horrorText"></div></div>
+<div class="blood-vignette" id="bloodVignette"></div>
+<div class="corruption-overlay" id="corruptionOverlay"></div>
+<div class="static-noise" id="staticNoise"></div>
+<div class="intrusion-alert" id="intrusionAlert">
+  <div class="alert-box">
+    <div class="alert-title" id="intrusionTitle">⚠ 未授权访问检测 ⚠</div>
+    <div class="alert-detail" id="intrusionDetail"></div>
+  </div>
+</div>
+<div class="memory-flash" id="memoryFlash">
+  <div class="flash-text" id="memoryText"></div>
+</div>
+<div class="shadow-figure" id="shadowFigure"></div>
+<div class="eye-watch" id="eyeWatch">👁</div>
+
+<div class="screen active" id="gameScreen">
+<div class="game-header">
+<span class="phase-indicator" id="phaseIndicator">月光档案室</span>
+<span>📅 5262年 | <span id="gameTime">03:17:00</span></span>
+<span class="sys-warn" id="sysWarn">系统状态：正常运行</span>
+<span class="anomaly" id="anomalyCount">异常事件：0</span>
+<button onclick="resetGame()" style="background:transparent;border:1px solid var(--danger);color:var(--danger);padding:2px 10px;cursor:pointer;font-family:inherit;font-size:.75em" title="重置所有进度">⟳ 重置</button>
+</div>
+<div class="game-body">
+<div class="nav-panel" id="navPanel"></div>
+<div class="content-panel" id="contentPanel"></div>
+<div class="notebook-panel">
+<h3>📓 线索笔记本</h3>
+<div id="clueList"></div>
+</div>
+</div>
+<div class="puzzle-bar" id="puzzleBar">
+<input type="text" id="puzzleInput" placeholder="输入答案..." onkeydown="if(event.key==='Enter')submitPuzzle()">
+<button onclick="submitPuzzle()">提 交</button>
+</div>
+</div>
+
+<div class="warning-overlay" id="warningOverlay">
+<div class="warning-text">
+⚠ 已检测到未授权的档案访问 ⚠<br>
+<span style="font-size:.6em">访问者信息已记录。安全小组已通知。</span>
+</div>
+<div class="countdown-text" id="warningCountdown">24</div>
+</div>
+
+<script src="js/game.js"></script>
+</body>
+</html>
