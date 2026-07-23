@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>残月协议 | Protocol: Waning Moon</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="scanline"></div>
+<div class="glitch-overlay" id="glitchOverlay"></div>
+<div class="eye-cursor" id="eyeCursor">👁</div>
+<div class="notification" id="notification"></div>
+<div class="horror-flash" id="horrorFlash"><div class="horror-text" id="horrorText"></div></div>
+<div class="blood-vignette" id="bloodVignette"></div>
+<div class="corruption-overlay" id="corruptionOverlay"></div>
+<div class="static-noise" id="staticNoise"></div>
+<div class="intrusion-alert" id="intrusionAlert">
+  <div class="alert-box">
+    <div class="alert-title" id="intrusionTitle">⚠ 未授权访问检测 ⚠</div>
+    <div class="alert-detail" id="intrusionDetail"></div>
+  </div>
+</div>
+<div class="memory-flash" id="memoryFlash">
+  <div class="flash-text" id="memoryText"></div>
+</div>
+<div class="shadow-figure" id="shadowFigure"></div>
+<div class="eye-watch" id="eyeWatch">👁</div>
+
+<div class="screen active" id="warningScreen">
+<div class="warning-box">
+<h2>⚠ 内容警告</h2>
+<p>本作品包含以下可能引起不适的内容：</p>
+<p>心理操控 · 记忆篡改 · 政府监控<br>非自愿实验 · 人身限制 · 恐怖氛围</p>
+<p style="color:var(--text)">本游戏为虚构ARG体验，所有角色与事件均为虚构。<br>如感到不适，请随时停止游戏。</p>
+<button onclick="showBoot()">我了解并同意继续</button>
+</div>
+</div>
+
+<div class="screen" id="bootScreen">
+<div class="boot-logo glitch-text">混居区公共信息服务系统</div>
+<div class="boot-system">
+<div>COHABITATION DISTRICT PUBLIC INFORMATION SERVICE v4.7.2</div>
+<div>YEAR 5262 | CLEARANCE: STANDARD</div>
+<div style="margin-top:10px;color:var(--accent2)">SYSTEM BOOT COMPLETE</div>
+<div style="color:var(--text2)">请输入公民编号或查询关键词：</div>
+<div id="bootClue" style="margin-top:15px;font-size:.7em;color:var(--text2);opacity:0.4;line-height:1.8">
+<div>[系统日志 03:17:00] 检测到未授权访问请求...</div>
+<div>[系统日志 03:17:01] 异常公民记录已标记。状态码：<span style="color:var(--warn);opacity:0.7">ERR_NULL_</span><span style="animation:flicker 2s infinite;color:var(--danger);opacity:0.5">???</span></div>
+<div>[系统日志 03:17:02] 如需受限访问，请输入完整状态码...</div>
+</div>
+</div>
+<div class="boot-input">
+<input type="text" id="bootInput" placeholder="输入查询内容..." onkeydown="if(event.key==='Enter')submitBoot()">
+<button onclick="submitBoot()">查 询</button>
+<button class="hint-btn" onclick="showBootHint()" style="background:transparent;border:1px solid var(--accent);color:var(--accent2);padding:8px 15px;cursor:pointer;font-family:inherit">💡 提示</button>
+<div class="boot-result" id="bootResult"></div>
+<div id="bootHintText" style="display:none;margin-top:10px;font-size:.75em;color:var(--text2);line-height:1.8"></div>
+</div>
+</div>
+
+<script src="js/game.js"></script>
+</body>
+</html>

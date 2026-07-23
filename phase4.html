@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>残月协议 - 终局</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="scanline"></div>
+<div class="glitch-overlay" id="glitchOverlay"></div>
+<div class="eye-cursor" id="eyeCursor">👁</div>
+<div class="notification" id="notification"></div>
+<div class="horror-flash" id="horrorFlash"><div class="horror-text" id="horrorText"></div></div>
+<div class="blood-vignette" id="bloodVignette"></div>
+<div class="corruption-overlay" id="corruptionOverlay"></div>
+<div class="static-noise" id="staticNoise"></div>
+<div class="intrusion-alert" id="intrusionAlert">
+  <div class="alert-box">
+    <div class="alert-title" id="intrusionTitle">⚠ 未授权访问检测 ⚠</div>
+    <div class="alert-detail" id="intrusionDetail"></div>
+  </div>
+</div>
+<div class="memory-flash" id="memoryFlash">
+  <div class="flash-text" id="memoryText"></div>
+</div>
+<div class="shadow-figure" id="shadowFigure"></div>
+<div class="eye-watch" id="eyeWatch">👁</div>
+
+<div class="screen active" id="gameScreen">
+<div class="game-header">
+<span class="phase-indicator" id="phaseIndicator">月光档案室</span>
+<span>📅 5262年 | <span id="gameTime">03:17:00</span></span>
+<span class="sys-warn" id="sysWarn">系统状态：正常运行</span>
+<span class="anomaly" id="anomalyCount">异常事件：0</span>
+<button onclick="resetGame()" style="background:transparent;border:1px solid var(--danger);color:var(--danger);padding:2px 10px;cursor:pointer;font-family:inherit;font-size:.75em" title="重置所有进度">⟳ 重置</button>
+</div>
+<div class="game-body">
+<div class="nav-panel" id="navPanel"></div>
+<div class="content-panel" id="contentPanel"></div>
+<div class="notebook-panel">
+<h3>📓 线索笔记本</h3>
+<div id="clueList"></div>
+</div>
+</div>
+<div class="puzzle-bar" id="puzzleBar">
+<input type="text" id="puzzleInput" placeholder="输入答案..." onkeydown="if(event.key==='Enter')submitPuzzle()">
+<button onclick="submitPuzzle()">提 交</button>
+</div>
+</div>
+
+<div class="warning-overlay" id="warningOverlay">
+<div class="warning-text">
+⚠ 已检测到未授权的档案访问 ⚠<br>
+<span style="font-size:.6em">访问者信息已记录。安全小组已通知。</span>
+</div>
+<div class="countdown-text" id="warningCountdown">24</div>
+</div>
+
+<div class="ending-screen" id="endingA">
+<h2 style="color:var(--accent2)">结局 A - 月出</h2>
+<div class="ending-title">真相公之于众</div>
+<p>你把一切公之于众。所有文件，所有实验记录，所有被掩盖的真相。</p>
+<p>世界知道了月光协议的存在。知道了那些被抹去的记忆。知道了七个被当作实验品的孩子。</p>
+<p>但与萝被定性为"危险个体"。她的狼族本能被用来证明实验的必要性。</p>
+<p>矫正中心门前，你站在台阶上，不知道自己为什么要来。</p>
+<p>手里攥着一只兔子玩偶。棉花下面，第37号缝线的位置，有一张纸条。</p>
+<p>你打开它，上面写着：</p>
+<p style="color:var(--warn);font-size:1.1em">"谢谢你记得我。"</p>
+<p>你不记得她是谁。但你的眼眶湿了。</p>
+<p class="small-text" style="margin-top:30px">苦涩的正义，像月光一样清冷。</p>
+<button onclick="if(confirm('重新开始游戏？')){localStorage.removeItem('waningmoon_save');location.href='index.html'}" style="margin-top:30px;background:transparent;border:1px solid var(--accent);color:var(--accent);padding:10px 30px;cursor:pointer;font-family:inherit">🔄 重新开始</button>
+</div>
+
+<div class="ending-screen" id="endingB">
+<h2 style="color:var(--accent2)">结局 B - 月落</h2>
+<div class="ending-title">一切归于沉默</div>
+<p>你选择沉默。文件被销毁。记录被清除。一切回归正常。</p>
+<p>你和与萝继续生活在混居区。上学，考试，呼吸着被监控的空气。</p>
+<p>与萝总是画兔子。你问她为什么，她说不出来。只是觉得应该画。</p>
+<p>你在旧货市场买了一只兔子玩偶。不知道为什么。</p>
+<p>有时候深夜，你会想起一个模糊的影子。狼的轮廓。月光下的奔跑。</p>
+<p>然后你翻了个身，继续睡。</p>
+<p style="color:var(--text2);font-size:.9em;margin-top:20px">遗忘是最温柔的残忍。</p>
+<button onclick="if(confirm('重新开始游戏？')){localStorage.removeItem('waningmoon_save');location.href='index.html'}" style="margin-top:30px;background:transparent;border:1px solid var(--accent);color:var(--accent);padding:10px 30px;cursor:pointer;font-family:inherit">🔄 重新开始</button>
+</div>
+
+<div class="ending-screen" id="endingC">
+<h2 style="color:var(--moon)">结局 C - 月光不灭</h2>
+<div class="ending-title" style="color:var(--moon)">隐藏结局</div>
+<p>你输入了 moonlight。</p>
+<p>系统沉默了三秒。然后屏幕上出现一行字：</p>
+<p style="color:var(--moon);font-size:1.1em">"你找到了。"</p>
+<p>伊尧和与萝的记忆并没有消失。它们被编码进了这个游戏本身。</p>
+<p>你不是在调查一个案件。你在成为他们记忆的一部分。</p>
+<p>每一次你解开谜题，你都在重建一段被抹去的记忆。</p>
+<p>每一次你发现线索，你都在证明——有些东西是镇静剂杀不死的。</p>
+<p style="color:var(--moon)">心跳记得。玩偶记得。月光记得。</p>
+<p style="color:var(--moon)">你记得。</p>
+<p style="margin-top:30px">月光下，兔子和狼并肩坐着。它们什么都不说。</p>
+<p>因为不需要。</p>
+<p style="color:var(--moon);font-size:1.1em;margin-top:30px">月光不灭。协议永存。</p>
+<p class="small-text" style="margin-top:30px">—— 感谢你，陌生的记忆守护者。</p>
+<button onclick="if(confirm('重新开始游戏？')){localStorage.removeItem('waningmoon_save');location.href='index.html'}" style="margin-top:30px;background:transparent;border:1px solid var(--accent);color:var(--accent);padding:10px 30px;cursor:pointer;font-family:inherit">🔄 重新开始</button>
+</div>
+
+<script src="js/game.js"></script>
+</body>
+</html>
